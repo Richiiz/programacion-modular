@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../services/products.service';
 
+import { Product } from '../../models/product.model';
+
+// agregamos todas las cosas que ocupa nuestro ngOnInit
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  products: Product[] = [];
+    limit = 10;
+    offset = 0;
 
-  ngOnInit(): void {
+  constructor(
+    private   productsService: ProductsService,
+  ) { }
+
+ ngOnInit(): void {
+    this.productsService.getAll(10, 0).subscribe((data) => {
+      this.products = data;
+      this.offset += this.limit;
+    });
   }
 
 }

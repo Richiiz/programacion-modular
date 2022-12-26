@@ -11,6 +11,13 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 // por cada ruta vamos a tener un render unico
 const routes: Routes = [
   {
+    // esto lo que hace es redireccionar la pagina por defecto al home :D
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    // si no le ponemos un texto en path, renderiza por defecto la pagina al entrar
     path: 'home',
     component: HomeComponent
   },
@@ -27,7 +34,7 @@ const routes: Routes = [
     component: MycartComponent
   },
   {
-    path: 'Login',
+    path: 'login',
     component: LoginComponent
   },
   {
