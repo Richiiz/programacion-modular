@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import {
   Product,
@@ -15,9 +15,13 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent  {
+
+  @Input() products: Product[] = [];
+  // este Ooutput emite un evento cada ves que le damos click
+  @Output() loadMore = new EventEmitter();
+
   myShoppingCart: Product[] = [];
   total = 0;
-  @Input() products: Product[] = [];
   showProductDetail = false;
   productChosen: Product | null = null;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
@@ -96,10 +100,8 @@ export class ProductsComponent  {
     }
   }
 
-  // loadMore() {
-  //   this.productsService.getAll(this.limit, this.offset).subscribe((data) => {
-  //     this.products = this.products.concat(data);
-  //     this.offset += this.limit;
-  //   });
-  // }
+  // este es el evento que emite comunicacion al padre e indica que se debe cargar mas informacion
+  onLoadMore() {
+    this.loadMore.emit();
+  }
 }

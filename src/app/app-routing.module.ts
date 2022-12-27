@@ -25,8 +25,8 @@ const routes: Routes = [
     path: 'Not-Found',
     component: NotFoundComponent
   },
-  {
-    path: 'category',
+  { // como se necesita recibir un parametro por url se pone el id
+    path: 'category/:id',
     component: CategoryComponent
   },
   {

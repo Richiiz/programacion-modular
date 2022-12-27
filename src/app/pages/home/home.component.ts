@@ -26,4 +26,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+// aca esta la funcion que hace la funcionalidad de mostrar mas productos
+  onLoadMore() {
+    this.productsService.getAll(this.limit, this.offset).subscribe((data) => {
+  // this.products contiene el array de productos y se le concatena en si mismo los demas productos que se estan pidiendo
+      this.products = this.products.concat(data);
+      this.offset += this.limit;
+    })
+  }
+
 }
