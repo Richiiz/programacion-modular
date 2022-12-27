@@ -1,3 +1,3 @@
 <!-- hacemos el render de los productos en la seccion de category -->
 <!-- app products se encarga de renderizar los productos y lo podemos reutilizar en otras -->
-<app-products [products]="products" ></app-products>
+<app-products [products]="products" (loadMore)="onLoadMore()"></app-products>
