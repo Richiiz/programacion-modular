@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CategoryComponent } from './pages/category/category.component';
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     path: 'Recovery',
     component: RecoveryComponent
+  },
+  {
+    // el doble asterisco indica que no encuentra la ruta
+    path: '**',
+    component: NotFoundComponent
   },
 ];
 
