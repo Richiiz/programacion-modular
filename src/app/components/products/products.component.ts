@@ -17,6 +17,15 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsComponent  {
 
   @Input() products: Product[] = [];
+  // cada ves que cambie el id del producto llamariamos onShowDetail
+  // @Input() productId: string | null = null;
+
+// con el hecho de enviarle el id que queremos mostrar al componente de productId ejecutariamos onShowDetail
+  @Input() set productId(id: string | null){
+    if(id){
+      this.onShowDetail(id);
+    }
+  }
   // este Ooutput emite un evento cada ves que le damos click
   @Output() loadMore = new EventEmitter();
 
@@ -45,7 +54,10 @@ export class ProductsComponent  {
 
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
-    this.toggleProductDetail();
+  // con esta condicion hacemos que mueste el slide en caso de que este cerrado
+    if(!this.showProductDetail) {
+      this.showProductDetail = true
+    }
     this.productsService.getOne(id).subscribe(
       (data) => {
         this.productChosen = data;

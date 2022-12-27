@@ -1,3 +1,7 @@
         <!-- envia un evento hacia el padre que indique cuando debe carcar mas productos -->
         <!-- esta funcion se aloja en el ts de home -->
-<app-products [products]="products" (loadMore)="onLoadMore()" ></app-products>
+<app-products
+  [productId]="productId"
+  [products]="products"
+  (loadMore)="onLoadMore()"
+></app-products>

@@ -15,11 +15,12 @@ import { Product } from '../../models/product.model';
 })
 export class CategoryComponent implements OnInit {
 
-  categoryId: string | null = null;
+  products: Product[] = [];
   // añadimos el limit y el offset para la paginacion
   limit = 10;
   offset = 0;
-  products: Product[] = [];
+  categoryId: string | null = null;
+  productId: string | null = null;
 
   constructor(
     // se inyecta como un servicio
@@ -47,7 +48,11 @@ export class CategoryComponent implements OnInit {
     .subscribe((data) => {
             // le decimos  que los productos van a ser igual a la data que encuentre con esa info
             this.products = data;
-          });
+          }
+        )
+            this.route.queryParamMap.subscribe((params) => {
+        this.productId = params.get('product');
+      });
       }
       onLoadMore() {
         if (this.categoryId) {
