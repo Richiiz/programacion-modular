@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { StoreService } from '../../services/store.service'
 import { AuthService } from '../../services/auth.service';
+import { CategoriesService } from '../../services/categories.service';
 import { User } from '../../models/user.model';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-nav',
@@ -14,16 +16,23 @@ export class NavComponent implements OnInit {
   activeMenu = false;
   counter = 0;
   profile: User | null = null;
+  // ocupas un array donde meter las categorias
+  // le ponemos un tipado y empieza como un array vacio
+  categories : Category[] = [];
 
   constructor(
     private storeService: StoreService,
     private authService: AuthService,
+    // este servicio lo que trae toda la funcionalidad para retornar todas las categorias que estan en nuestra API
+    private categoriesService: CategoriesService,
   ) { }
 
   ngOnInit(): void {
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length;
     });
+    // lo llamamos a este ngOnInit para que apenas renderice, me traiga todas las categorias
+    this.getAllCategories();
   }
 
   toggleMenu() {
@@ -35,6 +44,14 @@ export class NavComponent implements OnInit {
     .subscribe(user => {
       this.profile = user;
     });
+  }
+
+  getAllCategories() {
+    this.categoriesService.getAll()
+    // cuando responda esperamos tener la info para ser asignada en las categories
+    .subscribe(data => {
+      this.categories = data;
+    })
   }
 
 }

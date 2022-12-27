@@ -17,9 +17,12 @@
   <div class="side-menu" [class.active]="activeMenu">
     <button (click)="toggleMenu()">Close</button>
     <ul>
-      <li><a href="">All</a></li>
-      <li><a href="">Clothes</a></li>
-      <li><a href="">Electronics</a></li>
+      <li><a routerLink="home">All</a></li>
+      <!-- ponemos un ngFor ya que traemos un array y ponemos un item al que le iteramos el array ce categorias -->
+        <li *ngFor="let item of categories">
+          <!-- item.name imprime el nombre de la categoria de forma dinamica :3 -->
+          <a [routerLink]="['/category', item.id]">{{ item.name }}</a>
+        </li>
     </ul>
   </div>
 </div>
@@ -30,9 +33,13 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li><a href="">All</a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li>
+        <li><a routerLinkActive="active" routerLink="home">All</a></li>
+<!-- ponemos un ngFor ya que traemos un array y ponemos un item al que le iteramos el array ce categorias -->
+        <li *ngFor="let item of categories">
+          <!-- item.name imprime el nombre de la categoria de forma dinamica :3 -->
+          <!-- routerLinkActive le pone un estilo del scss al titulo de la ruta indicada -->
+          <a routerLinkActive="active" [routerLink]="['/category', item.id]">{{ item.name }}</a>
+        </li>
       </ul>
     </nav>
     <div class="info">
