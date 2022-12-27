@@ -32,10 +32,14 @@ export class CategoryComponent implements OnInit {
     // cada ves que se envie un nuevo id se obtendran esos eventos por medio de paramMap
     this.route.paramMap
     .pipe(
-      switchMap(params => {
+      switchMap((params) => {
          this.categoryId = params.get('id');
         if(this.categoryId){
-          return this.productsService.getByCategory(this.categoryId, this.limit, this.offset)
+          return this.productsService.getByCategory(
+            this.categoryId,
+            this.limit,
+            this.offset
+          );
         }
         return [];
       })

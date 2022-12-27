@@ -8,6 +8,7 @@ import { MycartComponent } from './pages/mycart/mycart.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 // por cada ruta vamos a tener un render unico
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
   { // como se necesita recibir un parametro por url se pone el id
     path: 'category/:id',
     component: CategoryComponent
+  },
+  { // cuando envie el product y el id nos lleva a la pagina product-detail
+    path: 'product/:id',
+    component: ProductDetailComponent
   },
   {
     path: 'My-Cart',
