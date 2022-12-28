@@ -46,11 +46,10 @@ export class CategoryComponent implements OnInit {
       })
     )
     .subscribe((data) => {
-            // le decimos  que los productos van a ser igual a la data que encuentre con esa info
-            this.products = data;
-          }
-        )
-            this.route.queryParamMap.subscribe((params) => {
+      // le decimos  que los productos van a ser igual a la data que encuentre con esa info
+      this.products = data;
+      });
+        this.route.queryParamMap.subscribe((params) => {
         this.productId = params.get('product');
       });
       }
