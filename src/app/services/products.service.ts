@@ -11,23 +11,19 @@ import { environment } from './../../environments/environment';
   providedIn: 'root'
 })
 export class ProductsService {
-// la url posiblemente va a cambiar, con la escepcion de que hay que ir  alas categorys, ponerle un id y luego los products
-// es por eso que le dejamos solo la api
+
   private apiUrl = `${environment.API_URL}/api`;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getByCategory (categoryId: string, limit?: number, offset?: number ){
+  getByCategory(categoryId: string, limit?: number, offset?: number){
     let params = new HttpParams();
     if (limit && offset != null) {
       params = params.set('limit', limit);
       params = params.set('offset', offset);
     }
-    // ahora vamos a obtener un array de productos
-// de esta forma ya tenemos los productos por categoria ya solo queda inyectar el servicio en category.components.ts
-
     return this.http.get<Product[]>(`${this.apiUrl}/categories/${categoryId}/products`, { params })
   }
 

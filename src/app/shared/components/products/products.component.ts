@@ -14,19 +14,16 @@ import { ProductsService } from '../../../services/products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent  {
+export class ProductsComponent {
 
   @Input() products: Product[] = [];
-  // cada ves que cambie el id del producto llamariamos onShowDetail
   // @Input() productId: string | null = null;
-
-// con el hecho de enviarle el id que queremos mostrar al componente de productId ejecutariamos onShowDetail
-  @Input() set productId(id: string | null){
-    if(id){
+  @Input()
+  set productId(id: string | null ){
+    if (id) {
       this.onShowDetail(id);
     }
   }
-  // este Ooutput emite un evento cada ves que le damos click
   @Output() loadMore = new EventEmitter();
 
   myShoppingCart: Product[] = [];
@@ -42,7 +39,6 @@ export class ProductsComponent  {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
 
-
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
@@ -54,9 +50,8 @@ export class ProductsComponent  {
 
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
-  // con esta condicion hacemos que mueste el slide en caso de que este cerrado
-    if(!this.showProductDetail) {
-      this.showProductDetail = true
+    if (!this.showProductDetail) {
+      this.showProductDetail = true;
     }
     this.productsService.getOne(id).subscribe(
       (data) => {
@@ -112,7 +107,6 @@ export class ProductsComponent  {
     }
   }
 
-  // este es el evento que emite comunicacion al padre e indica que se debe cargar mas informacion
   onLoadMore() {
     this.loadMore.emit();
   }

@@ -5,9 +5,7 @@
     (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="onShowDetail($event)"
   ></app-product>
-<!-- aqui esta el boton peor ta no esta la logica aqui, esta en products.component.ts -->
   <button (click)="onLoadMore()">Load more</button>
-
 </div>
 <div class="product-detail" [class.active]="showProductDetail">
   {{ statusDetail }}

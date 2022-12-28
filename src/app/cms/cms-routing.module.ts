@@ -12,18 +12,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // si le dejamos un / al grid le estariamos indicando
         redirectTo: 'grid',
         pathMatch: 'full'
       },
       {
-        path:'grid',
+        path: 'grid',
         component: GridComponent
       },
       {
-        path:'tasks',
+        path: 'tasks',
         component: TasksComponent
-      },
+      }
     ]
   }
 ];
