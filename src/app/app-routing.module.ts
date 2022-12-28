@@ -25,6 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
+    // la estrategia esta incorporada aqui, solo hay que activar ese paquete en cada modulo
     preloadingStrategy: QuicklinkStrategy
   })],
   exports: [RouterModule]
