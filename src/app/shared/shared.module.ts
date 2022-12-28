@@ -5,6 +5,7 @@ import { SwiperModule } from 'swiper/angular';
 
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
+
 import { HighlightDirective } from './directives/highlight.directive';
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
