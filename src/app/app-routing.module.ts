@@ -1,24 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { MycartComponent } from './pages/mycart/mycart.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { RecoveryComponent } from './pages/recovery/recovery.component';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { LayoutComponent } from './website/components/layout/layout.component';
+import { HomeComponent } from './website/pages/home/home.component';
+import { NotFoundComponent } from './website/pages/not-found/not-found.component';
+import { CategoryComponent } from './website/pages/category/category.component';
+import { MycartComponent } from './website/pages/mycart/mycart.component';
+import { LoginComponent } from './website/pages/login/login.component';
+import { RegisterComponent } from './website/pages/register/register.component';
+import { RecoveryComponent } from './website/pages/recovery/recovery.component';
+import { ProductDetailComponent } from './website/pages/product-detail/product-detail.component';
+
 
 // por cada ruta vamos a tener un render unico
 const routes: Routes = [
   {
     // esto lo que hace es redireccionar la pagina por defecto al home :D
     path: '',
+    component: LayoutComponent,
+    children: [
+      {
+    // esto lo que hace es redireccionar la pagina por defecto al home :D
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  {
+      {
     // si no le ponemos un texto en path, renderiza por defecto la pagina al entrar
     path: 'home',
     component: HomeComponent
@@ -51,6 +58,9 @@ const routes: Routes = [
     path: 'Recovery',
     component: RecoveryComponent
   },
+    ]
+  },
+
   {
     // el doble asterisco indica que no encuentra la ruta
     path: '**',

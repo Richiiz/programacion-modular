@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 // con switchMap evitamos
 import { switchMap } from 'rxjs/operators';
 // importamos el archivo
-import { ProductsService } from './../../services/products.service'
-import { Product } from '../../models/product.model';
+import { ProductsService } from './../../../services/products.service'
+import { Product } from '../../../models/product.model';
 
 @Component({
   selector: 'app-category',
