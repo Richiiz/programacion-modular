@@ -60,7 +60,11 @@ const routes: Routes = [
   },
     ]
   },
-
+  {
+    path: 'cms',
+    // esto nos sirve para poder importar un modulo externo , a diferencia de los componentes que forman parte del mismo modulo en si
+    loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule)
+  },
   {
     // el doble asterisco indica que no encuentra la ruta
     path: '**',
