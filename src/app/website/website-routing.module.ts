@@ -28,7 +28,6 @@ const routes: Routes = [
       {
         path: 'category',
         loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
-        // esta es la bndera que comprueba nuestra condicion del custom-preoload
         data: {
           preload: true,
         }
